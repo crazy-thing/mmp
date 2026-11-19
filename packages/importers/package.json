@@ -1,0 +1,22 @@
+{
+  "name": "@mmp/importers",
+  "version": "5.0.0-alpha.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mmp/schema": "*",
+    "yauzl": "^3.2.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/yauzl": "^2.10.3",
+    "yazl": "^3.3.1",
+    "@types/yazl": "^2.4.6"
+  }
+}

@@ -1,0 +1,17 @@
+# MMP server on its own, served over plain HTTP on port 8080.
+# Fine for testing and for players on your own network. For players over the internet we recommend
+# the Cloudflare Tunnel setup instead (docker-compose.tunnel.yml), which adds HTTPS.
+#   docker compose up -d && docker compose logs mmp   (the log shows the setup code)
+# Guide: README.md in this folder.
+
+services:
+  mmp:
+    image: crazything1/mmp:${MMP_VERSION:-latest}
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - mmp-data:/data
+
+volumes:
+  mmp-data:

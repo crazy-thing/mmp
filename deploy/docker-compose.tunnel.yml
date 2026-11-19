@@ -1,0 +1,29 @@
+# MMP server behind a Cloudflare Tunnel (recommended). HTTPS, no port forwarding, no public IP needed.
+# Needs a domain that uses Cloudflare for DNS.
+#   1. Create a tunnel in the Cloudflare dashboard (Zero Trust > Networks > Tunnels) and copy its token.
+#   2. Add a public hostname on the tunnel, e.g. packs.example.com -> HTTP, mmp:8080
+#   3. cp .env.example .env and set TUNNEL_TOKEN.
+#   4. docker compose -f docker-compose.tunnel.yml up -d && docker compose -f docker-compose.tunnel.yml logs mmp
+# Full guide: cloudflare-tunnel.md in this folder.
+
+services:
+  mmp:
+    image: crazything1/mmp:${MMP_VERSION:-latest}
+    restart: unless-stopped
+    environment:
+      SECURE_COOKIES: "true"
+      TRUST_PROXY: "true"
+    volumes:
+      - mmp-data:/data
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    depends_on:
+      - mmp
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN:?Set TUNNEL_TOKEN in .env (from the Cloudflare dashboard)}
+
+volumes:
+  mmp-data:

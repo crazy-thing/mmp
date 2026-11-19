@@ -1,0 +1,16 @@
+{
+  "name": "@mmp/schema",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The API and pack manifest types shared by MMP and MML. MML keeps a synced copy; see packages/schema/README.md.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "zod": "^4.0.0"
+  }
+}

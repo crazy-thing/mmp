@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+/* Colours from the MMPanel Figma file. */
+@theme {
+  --color-mm-bg: #0e0e12;
+  --color-mm-surface: #19191e;
+  --color-mm-raised: #292930;
+  --color-mm-chip: #282a2e;
+  --color-mm-line: #464646;
+  --color-mm-frame: #3e3e5d;
+  --color-mm-select-btn: #485678;
+  --color-mm-accent: #1eb298;
+  --color-mm-muted: #888888;
+  --color-mm-released: #00c12a;
+  --color-mm-dev: #ffa600;
+  --color-mm-off: #343434;
+  --color-mm-danger: #ff3b3b;
+  --font-rounded: 'SF Pro Rounded', ui-rounded, 'SF Pro', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--color-mm-bg);
+  color: #fff;
+  font-family: var(--font-rounded);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+}
+
+/* Thin dark scrollbars inside the panel boxes. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3e3e5d transparent;
+}
+
+/* Changelog as the launcher shows it (launcher/src/renderer/index.css). */
+.changelog {
+  font-size: 25px;
+  line-height: 1;
+}
+.changelog p,
+.changelog li {
+  margin: 25px 0;
+}
+.changelog h1,
+.changelog h2,
+.changelog h3,
+.changelog strong,
+.changelog b {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+.changelog ul {
+  list-style: disc;
+  padding-left: 1.5em;
+}
+.changelog ol {
+  list-style: decimal;
+  padding-left: 1.5em;
+}
+.changelog img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Changelog preview in the versions table (Figma: 25px headings, 20px body). */
+.changelog-sm {
+  font-size: 20px;
+  line-height: 1.15;
+}
+.changelog-sm > * + * {
+  margin-top: 14px;
+}
+.changelog-sm li + li {
+  margin-top: 14px;
+}
+.changelog-sm h1,
+.changelog-sm h2,
+.changelog-sm h3,
+.changelog-sm strong,
+.changelog-sm b {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1;
+}
+.changelog-sm h4,
+.changelog-sm h5,
+.changelog-sm h6 {
+  font-weight: 700;
+}
+.changelog-sm ul {
+  list-style: disc;
+  padding-left: 22px;
+}
+.changelog-sm ol {
+  list-style: decimal;
+  padding-left: 22px;
+}
+.changelog-sm em {
+  font-style: italic;
+}
+.changelog-sm img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Changelog editor (TipTap) */
+.tiptap {
+  font-size: 20px;
+  line-height: 1.3;
+}
+.tiptap > * + * { margin-top: 0.75em; }
+.tiptap ul, .tiptap ol { padding: 0 1.2rem; list-style-position: outside; }
+.tiptap ul { list-style-type: disc; }
+.tiptap ol { list-style-type: decimal; }
+.tiptap h1, .tiptap h2, .tiptap h3, .tiptap h4, .tiptap h5, .tiptap h6 { line-height: 1.1; font-weight: bold; }
+.tiptap h1 { font-size: 2em; }
+.tiptap h2 { font-size: 1.5em; }
+.tiptap h3 { font-size: 1.25em; }
+.tiptap h4 { font-size: 1em; }
+.tiptap h5 { font-size: 0.83em; }
+.tiptap h6 { font-size: 0.67em; }
+.tiptap code { background-color: rgba(255, 255, 255, 0.08); color: #ddd; padding: 0.2em 0.4em; border-radius: 3px; }
+.tiptap pre { background: #000; color: #fff; padding: 0.75rem 1rem; border-radius: 0.5rem; }
+.tiptap pre code { color: inherit; padding: 0; background: none; font-size: 0.8em; }
+.tiptap img { max-width: 100%; height: auto; }
+.tiptap blockquote { padding-left: 1rem; border-left: 2px solid #3e3e5d; }
+.tiptap hr { border: none; border-top: 2px solid #3e3e5d; margin: 2rem 0; }
+.tiptap p { margin: 0; }
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #555;
+  pointer-events: none;
+  height: 0;
+}

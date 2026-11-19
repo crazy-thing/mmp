@@ -1,0 +1,31 @@
+{
+  "name": "mmp",
+  "private": true,
+  "version": "5.0.0-alpha.0",
+  "description": "MMP - Modpack Management Panel: the self-hosted server and admin panel for MML",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @mmp/server & npm run dev --workspace @mmp/panel",
+    "dev:server": "npm run dev --workspace @mmp/server",
+    "dev:panel": "npm run dev --workspace @mmp/panel",
+    "build": "npm run build --workspace @mmp/panel && npm run build --workspace @mmp/server",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run",
+    "start": "npm run start --workspace @mmp/server",
+    "seed": "node --import tsx scripts/seed-demo.ts",
+    "release:image": "bash scripts/release-image.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.0",
+    "vitest": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}
